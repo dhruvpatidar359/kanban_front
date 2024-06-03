@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Column from './column';
-import TaskForm from './taskForm';
+import TaskForm from './taskform';
 
 const KanbanBoard = () => {
   const [tasks, setTasks] = useState([]);
