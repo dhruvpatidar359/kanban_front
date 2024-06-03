@@ -1,4 +1,4 @@
-import KanbanBoard from '../components/kanbanBoard';
+import KanbanBoard from '../components/kanbanboard';
 
 const Home = () => {
   return (
