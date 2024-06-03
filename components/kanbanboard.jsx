@@ -8,21 +8,13 @@ import TaskForm from './taskForm';
 
 const KanbanBoard = () => {
   const [tasks, setTasks] = useState([]);
-  const [guard,setGaurd] = useState(0);
+  
+  const url = 'https://server-a2o3.onrender.com/tasks';
 
-  useEffect(() => {
-    if(guard !== 1) {
-      fetchTasks();
-      setGaurd(1);
-    }
-
-
-   
-  }, []);
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/tasks');
+      const response = await fetch(url);
       const data = await response.json();
       setTasks(data);
     } catch (error) {
@@ -32,7 +24,7 @@ const KanbanBoard = () => {
 
   const addTask = async (task) => {
     try {
-      const response = await fetch('http://localhost:5000/tasks', {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +42,7 @@ const KanbanBoard = () => {
     console.log(id);
     
     try {
-      const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+      const response = await fetch(`https://server-a2o3.onrender.com/tasks/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +66,7 @@ const KanbanBoard = () => {
   const deleteTask = async (id) => {
     console.log(id);
     try {
-      await fetch(`http://localhost:5000/tasks/${id}`, {
+      await fetch(`https://server-a2o3.onrender.com/tasks/${id}`, {
         method: 'DELETE',
       });
       setTasks(tasks.filter(task => task.id !== id));
